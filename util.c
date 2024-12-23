@@ -9,9 +9,9 @@ typedef int element_int;
 
 
 void AfficherLeMessage(void (*f)(void)) {
+    
     time_t debut = time(NULL);
     time_t courant;
-
     
     while (1) {
         courant = time(NULL);
@@ -25,9 +25,9 @@ void AfficherLeMessage(void (*f)(void)) {
         fflush(stdout);  
 
         usleep(clignotement); 
-	printf("\t\t\t");
+	
      
-        printf("\r                        \r");
+        printf("\r                                                \r");
         fflush(stdout);
 
         usleep(clignotement);  
@@ -38,14 +38,14 @@ void AfficherLeMessage(void (*f)(void)) {
 }
 
 
-void afficherMessageMachain() {
-    printf("Entrez la valeur que vous voulez ajouter :");
+void afficherMessageEntrezLeval() {
+    printf("Entrez la valeur que vous voulez ajouter");
 }
 
 int entrelavaleur() {
     
     element_int n;
-    AfficherLeMessage(afficherMessageMachain);   
+    AfficherLeMessage(afficherMessageEntrezLeval);   
     printf("\n->  ");
     fflush(stdout);
     scanf("%d", &n);
