@@ -27,7 +27,7 @@ void AfficherLeMessage(void(*f)(void)) {
         usleep(clignotement); 
 	
      
-        printf("\r                                                \r");
+        printf("\r                                                \r ");
         fflush(stdout);
 
         usleep(clignotement);  
@@ -46,7 +46,7 @@ int entrelavaleur() {
     
     element_int n;
     AfficherLeMessage(afficherMessageEntrezLeval);   
-    printf("\n->  ");
+    printf("\n-> ");
     fflush(stdout);
     scanf("%d", &n);
   

@@ -7,7 +7,7 @@
 #define clignotement 200000 
 #define letempsdourant 2  
 
-typedef int element_int;
+typedef int element_int; // origine PIA
 
 void AfficherLeMessage(void(*f)(void));
 void afficherMessageEntrezLeval();
