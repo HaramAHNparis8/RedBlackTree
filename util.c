@@ -8,7 +8,7 @@
 typedef int element_int;
 
 
-void AfficherLeMessage(void (*f)(void)) {
+void AfficherLeMessage(void(*f)(void)) {
     
     time_t debut = time(NULL);
     time_t courant;
