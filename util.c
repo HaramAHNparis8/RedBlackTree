@@ -1,11 +1,4 @@
-#include <stdio.h>
-#include <unistd.h>  // sleep(), usleep()
-#include <time.h>    // time()
-
-#define clignotement 200000 
-#define letempsdourant 2  
-
-typedef int element_int;
+#include "util.h"
 
 
 void AfficherLeMessage(void(*f)(void)) {
