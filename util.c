@@ -53,8 +53,4 @@ int entrelavaleur() {
     return n;
 }
 
-int main(void) {
-    int n = entrelavaleur(); 
-    printf("\nRésultat : %d\n", n);  
-    return 0;
-}
+
