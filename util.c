@@ -23,7 +23,7 @@ int entrelavaleur(){
 		usleep(clignotement);
 		
 		courant = time(NULL);	
-		if(courant - debut < letempsdourant){
+		if(courant - debut > letempsdourant){
 
 			break;
 		};
