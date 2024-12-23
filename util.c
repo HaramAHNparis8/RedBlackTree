@@ -2,8 +2,8 @@
 #include <unistd.h>  // sleep(), usleep()
 #include <time.h>    // time()
 
-#define clignotement 500000 
-#define letempsdourant 5    
+#define clignotement 200000 
+#define letempsdourant 2  
 
 typedef int element_int;
 
@@ -12,6 +12,7 @@ void AfficherLeMessage(void (*f)(void)) {
     time_t debut = time(NULL);
     time_t courant;
 
+    
     while (1) {
         courant = time(NULL);
 
@@ -19,15 +20,13 @@ void AfficherLeMessage(void (*f)(void)) {
         if (courant - debut >= letempsdourant) {
             break;
         }
-
-        
         (*f)();
-
+	
         fflush(stdout);  
 
         usleep(clignotement); 
-
-        
+	printf("\t\t\t");
+     
         printf("\r                        \r");
         fflush(stdout);
 
@@ -40,13 +39,12 @@ void AfficherLeMessage(void (*f)(void)) {
 
 
 void afficherMessageMachain() {
-    printf("Entrez la valeur que vous voulez ajouter.");
+    printf("Entrez la valeur que vous voulez ajouter :");
 }
 
 int entrelavaleur() {
     
     element_int n;
-    printf("\n");
     AfficherLeMessage(afficherMessageMachain);   
     printf("\n->  ");
     fflush(stdout);
