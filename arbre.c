@@ -8,9 +8,9 @@ noeud_t* AllouerMallocNoeud_t(){
 	return noeud;
 }
 
-arbreRB_t* AllouerMallocArbreRB_t(){
+arbreRN_t* AllouerMallocArbreRB_t(){
 
-	arbreRB_t* noeud = (arbreRB_t *)malloc(sizeof(arbreRB_t));
+	arbreRN_t* noeud = (arbreRN_t *)malloc(sizeof(arbreRN_t));
 	
 	return noeud;
 }
@@ -34,7 +34,7 @@ noeud_t* AllouerNoeudNil(){
 	
 
 } 
-arbreRB_t* AllouerAbreRB(){
+arbreRN_t* AllouerAbreRB(){
 
 	arbreRB_t* arbre = AllouerMallocArbreRB_t();
 	arbre -> nil = AllouerMallocNoeud_t();

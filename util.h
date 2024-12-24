@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <unistd.h>  // sleep(), usleep()
 #include <time.h>    // time()
-
+#include "arbre.h"
 #define clignotement 200000 
 #define letempsdourant 2  
 

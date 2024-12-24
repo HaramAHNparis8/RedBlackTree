@@ -8,7 +8,7 @@ typedef enum { rouge, noir } couleur_t;
 
 typedef struct noeud {
   couleur_t couleur;
-  element_int cle;
+  int cle; // avant j'utilise element_int dans le fichier util.h mais il ne recherche pas - le probleme que je regle apres
   struct noeud * parent; 
   struct noeud * g; 
   struct noeud * d;
@@ -21,9 +21,9 @@ typedef struct arbreRN{
 
 }arbreRN_t;
 noeud_t* AllouerMallocNoeud_t();
-arbreRB_t* AllouerMallocArbreRB_t();
+arbreRN_t* AllouerMallocArbreRB_t();
 noeud_t* AllouerMalloc();
 noeud_t* AllouerNoeudNil();
-arbreRB_t* AllouerAbreRB();
+arbreRN_t* AllouerAbreRB();
 int EstRouge(couleur_t* couleur);
 #endif
