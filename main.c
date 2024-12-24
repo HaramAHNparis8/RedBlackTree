@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "main.h"
 #include "util.h" 
 #include "arbre.h"
 
@@ -15,6 +15,6 @@ void TestLaFonction(){
 }
 
 int main(void) {
- 
+    TestLaFonction(); 
     return 0;
 }
