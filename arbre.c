@@ -36,11 +36,11 @@ noeud_t* AllouerNoeudNil(){
 } 
 arbreRN_t* AllouerAbreRB(){
 
-	arbreRB_t* arbre = AllouerMallocArbreRB_t();
-	arbre -> nil = AllouerMallocNoeud_t();
-	arbre -> racine = arbre -> nil;
+	arbreRN_t* noeud = AllouerMallocArbreRB_t();
+	noeud -> nil = AllouerNoeudNil();
+	noeud -> racine = noeud -> nil;
 	
-	return arbre;
+	return noeud;
 
 }
 

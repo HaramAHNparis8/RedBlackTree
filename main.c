@@ -5,7 +5,7 @@
 void AfficherResultatNilEstBienAllouerOuPas(){
 	arbreRN_t* arbre = AllouerAbreRB();
 	printf("\n1 est bien allouer mais si c'est 0 non\n");
-	printf("\nres :%d\n ",EstRouge(&(arbre -> nil -> couleur)));
+	printf("\nres :%d\n ",EstNoir(&(arbre -> nil -> couleur)));
 
 	
 }

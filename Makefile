@@ -7,7 +7,7 @@ CFLAGS = -Wall -Wextra -std=c11 -fsanitize=address -g
 TARGET = ArbreRougeEtNoir
 
 
-SRC = main.c util.c
+SRC = main.c util.c arbre.c
 
 
 OBJ = $(SRC:.c=.o)
