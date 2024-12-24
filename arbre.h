@@ -14,11 +14,16 @@ typedef struct noeud {
   struct noeud * d;
 } noeud_t;
 
-typedef struct arbreRB{
+typedef struct arbreRN{
   
   noeud_t * racine;
   noeud_t * nil;
 
-}arbreRB_t;
-
+}arbreRN_t;
+noeud_t* AllouerMallocNoeud_t();
+arbreRB_t* AllouerMallocArbreRB_t();
+noeud_t* AllouerMalloc();
+noeud_t* AllouerNoeudNil();
+arbreRB_t* AllouerAbreRB();
+int EstRouge(couleur_t* couleur);
 #endif

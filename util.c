@@ -1,5 +1,5 @@
 #include "util.h"
-
+#include "arbre.h"
 
 void AfficherLeMessage(void(*f)(void)) {
     
@@ -46,4 +46,11 @@ int entrelavaleur() {
     return n;
 }
 
+int EstRouge(couleur_t* couleur){
 
+	return (*couleur == rouge) ? 1 : 0;
+}
+int EstNoir(couleur_t* couleur){
+
+	return (*couleur == noir) ? 1 : 0;
+}

@@ -12,5 +12,7 @@ typedef int element_int; // origine PIA
 void AfficherLeMessage(void(*f)(void));
 void afficherMessageEntrezLeval();
 int entrelavaleur();
+int EstRouge(couleur_t* couleur);
+int EstNoir(couleur_t* couleur);
 
 #endif
