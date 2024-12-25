@@ -64,9 +64,48 @@ noeud_t* InitialisationArbreGN(arbreRN_t *t, int cle){
 		
 }
 
-noeud_t* InsertionNoeudAbreRG(arbreRN_t* t, int cle){
-	noeud_t* noeud = InitialisationArbreGN(t,cle);
-	if(t -> racine == t -> nill){
+void RechercheNoeudSential(arbreRN_t* t,noeud_t** actuelle, noeud_t** avant,int val){
+
+	//on descend jusqu'a trouver les noeud sential
+	while(*actuelle != t -> nil){
+		
+		*avant = *actuelle;
+		if(val < (*actuelle) -> cle){
+			
+			*actuelle = (*actuelle) -> g;
+
+		}
+		else{
+
+			*actuelle = (*actuelle) -> d; 
+		}
+	}
+		
+
+}
+
+void RechercheNoeudSentialRecusitif(arbreRN_t* t, noeud_t** actuelle, noeud_t** avant, int val) {
+    
+    if (*actuelle == t->nil) {
+        return;
+    }
+
+    *avant = *actuelle; 
+
+    
+    if (val < (*actuelle)->cle) {
+        RechercheNoeudSentialRecusitif(t, &((*actuelle)->g), avant, val);
+    } 
+    else {
+        RechercheNoeudSentialRecusitif(t, &((*actuelle)->d), avant, val);
+    }
+}
+
+noeud_t* InsertionNoeudAbreRG(arbreRN_t* t, int val){
+	noeud_t* noeud = InitialisationArbreGN(t,val);
+	//si l'arbre est vide on ajoute et apres retourner les noeuds
+	
+	if(t -> racine == t -> nil){
 		
 		t -> racine = noeud;
 		t -> racine -> couleur = noir;
@@ -74,4 +113,31 @@ noeud_t* InsertionNoeudAbreRG(arbreRN_t* t, int cle){
 		return noeud;
 
 	}
+	
+// la premier propostion
+
+	noeud_t* actuelle = t -> racine; // quand on ajoute les noeuds c'est noeud compare avec le noeud nouveau
+	noeud_t* avant = t -> nil; // ce noeud devient parent noeud
+	
+	RechercheNoeudSential(t, &actuelle, &avant, val);
+//si il y aurait bcp de data, ca cause l'erreur donc j'use la premiere propostion
+
+// la deuxieme propostion
+
+	//RechercheNoeudSentialRecursif(t, &actuelle, &avant, val);
+
+	noeud -> parent = avant;
+	if(val < avant -> cle){
+
+		avant -> g = noeud;
+
+	}
+	else{
+		avant -> d = noeud;
+	}
+
+	return noeud;
+
 }
+
+	

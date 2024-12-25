@@ -35,4 +35,5 @@ noeud_t* AllouerMalloc();
 noeud_t* AllouerNoeudNil();
 arbreRN_t* AllouerAbreRN();
 int EstRouge(couleur_t* couleur);
+noeud_t* InitialisationArbreGN(arbreRN_t *t, int val);
 #endif
