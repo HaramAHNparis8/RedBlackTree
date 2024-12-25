@@ -34,7 +34,6 @@ arbreRN_t* AllouerMallocArbreRB_t();
 noeud_t* AllouerMalloc();
 noeud_t* AllouerNoeudNil();
 arbreRN_t* AllouerAbreRN();
-int EstRouge(couleur_t* couleur);
 noeud_t* InitialisationArbreGN(arbreRN_t *t, int val);
 void RechercheNoeudSential(arbreRN_t* t,noeud_t** actuelle, noeud_t** avant,int val);
 void RechercheNoeudSentialRecusitif(arbreRN_t* t, noeud_t** actuelle, noeud_t** avant, int val);
