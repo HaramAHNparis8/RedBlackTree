@@ -4,5 +4,6 @@
 #include "util.h"
 #include "arbre.h"
 void AfficherResultatNilEstBienAllouerOuPas();
+int EstRouge(couleur_t* couleur);
 void TestLaFonction();
 #endif

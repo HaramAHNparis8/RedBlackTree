@@ -45,7 +45,9 @@ int entrelavaleur() {
   
     return n;
 }
+double EstimationGeneral(){
 
+}
 int EstRouge(couleur_t* couleur){
 
 	return (*couleur == rouge) ? 1 : 0;

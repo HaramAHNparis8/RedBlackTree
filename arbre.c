@@ -120,7 +120,7 @@ noeud_t* InsertionNoeudAbreRG(arbreRN_t* t, int val){
 	noeud_t* avant = t -> nil; // ce noeud devient parent noeud
 	
 	RechercheNoeudSential(t, &actuelle, &avant, val);
-//si il y aurait bcp de data, ca cause l'erreur donc j'use la premiere propostion
+//s'il y aurait bcp de data, ca cause l'erreur donc j'use la premiere propostion
 
 // la deuxieme propostion
 
@@ -139,5 +139,19 @@ noeud_t* InsertionNoeudAbreRG(arbreRN_t* t, int val){
 	return noeud;
 
 }
+void RNInsertReparer(arbreRN_t* t, noeud_t* noeud){
+	while(1){
 
+		if(noeud != t -> racine && noeud -> parent -> couleur == rouge){
+				break;
+			}
+
+		if(noeud != NULL){
+
+			}
+
+
+		}
+	}
+}
 	
