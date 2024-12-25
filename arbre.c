@@ -1,5 +1,6 @@
 #include "util.h"
 #include "arbre.h"
+#include "main.h"
 
 noeud_t* AllouerMallocNoeud_t(){
 
@@ -8,7 +9,7 @@ noeud_t* AllouerMallocNoeud_t(){
 	return noeud;
 }
 
-arbreRN_t* AllouerMallocArbreRB_t(){
+arbreRN_t* AllouerMallocArbreRN_t(){
 
 	arbreRN_t* noeud = (arbreRN_t *)malloc(sizeof(arbreRN_t));
 	
@@ -34,9 +35,9 @@ noeud_t* AllouerNoeudNil(){
 	
 
 } 
-arbreRN_t* AllouerAbreRB(){
+arbreRN_t* AllouerAbreRN(){
 
-	arbreRN_t* noeud = AllouerMallocArbreRB_t();
+	arbreRN_t* noeud = AllouerMallocArbreRN_t();
 	noeud -> nil = AllouerNoeudNil();
 	noeud -> racine = noeud -> nil;
 	
@@ -44,4 +45,33 @@ arbreRN_t* AllouerAbreRB(){
 
 }
 
+noeud_t* InitialisationArbreGN(arbreRN_t *t, int cle){
+	
+	noeud_t* noeud = AllouerMallocNoeud_t();
+	if(noeud == NULL){
+		
+		return NULL;
+	}
+	
+	noeud -> couleur  = rouge;
+	noeud -> cle = cle;
+	noeud -> parent = t -> nil;
+	noeud -> g = t -> nil;
+	noeud -> d = t -> nil;
 
+	return noeud;
+	
+		
+}
+
+noeud_t* InsertionNoeudAbreRG(arbreRN_t* t, int cle){
+	noeud_t* noeud = InitialisationArbreGN(t,cle);
+	if(t -> racine == t -> nill){
+		
+		t -> racine = noeud;
+		t -> racine -> couleur = noir;
+		
+		return noeud;
+
+	}
+}

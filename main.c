@@ -3,7 +3,7 @@
 #include "arbre.h"
 
 void AfficherResultatNilEstBienAllouerOuPas(){
-	arbreRN_t* arbre = AllouerAbreRB();
+	arbreRN_t* arbre = AllouerAbreRN();
 	printf("\n1 est bien allouer mais si c'est 0 non\n");
 	printf("\nres :%d\n ",EstNoir(&(arbre -> nil -> couleur)));
 
@@ -15,6 +15,6 @@ void TestLaFonction(){
 }
 
 int main(void) {
-    TestLaFonction(); 
+    TestLaFonction();
     return 0;
 }

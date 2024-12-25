@@ -3,15 +3,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "util.h"
+#include "main.h"
 
-typedef enum { rouge, noir } couleur_t;
+typedef enum couleur{ 
+	rouge, 
+	noir 
+} couleur_t;
+
+
 
 typedef struct noeud {
   couleur_t couleur;
   int cle; // avant j'utilise element_int dans le fichier util.h mais il ne recherche pas - le probleme que je regle apres
+
   struct noeud * parent; 
   struct noeud * g; 
   struct noeud * d;
+
 } noeud_t;
 
 typedef struct arbreRN{
@@ -20,10 +28,11 @@ typedef struct arbreRN{
   noeud_t * nil;
 
 }arbreRN_t;
+
 noeud_t* AllouerMallocNoeud_t();
 arbreRN_t* AllouerMallocArbreRB_t();
 noeud_t* AllouerMalloc();
 noeud_t* AllouerNoeudNil();
-arbreRN_t* AllouerAbreRB();
+arbreRN_t* AllouerAbreRN();
 int EstRouge(couleur_t* couleur);
 #endif
