@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "main.h"
 #include "util.h" 
 #include "arbre.h"
@@ -13,8 +14,36 @@ void TestLaFonction(){
 	AfficherResultatNilEstBienAllouerOuPas();
 
 }
+void AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(noeud_t* noeud, noeud_t* nil, int niveau){
 
+	int i;
+	if(noeud == nil){
+		
+		return;
+	}
+	AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(noeud -> d, nil, niveau + 1);
+	for(i = 0; i < niveau; i++){
+		
+		printf("   ");
+
+	}
+	printf("%d [%s] \n", noeud->cle, noeud->couleur == rouge ? "Rouge" : "Noir");
+	AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(noeud -> g, nil, niveau + 1);
+	
+
+
+}
+
+void LeMessageInsertionFonction(){
+	printf("Insertion des noeuds dans l'abre");
+}
 int main(void) {
-    TestLaFonction();
+    //TestLaFonction();
+    AfficherLeMessage(LeMessageInsertionFonction);
+    arbreRN_t* arbre = AllouerAbreRN();
+    InsertionNoeudAbreRG(arbre, 10);
+    InsertionNoeudAbreRG(arbre, 20); 
+    InsertionNoeudAbreRG(arbre, 30);
+    AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(arbre -> racine, arbre -> nil, 0);   
     return 0;
 }
