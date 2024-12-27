@@ -35,6 +35,7 @@ noeud_t* AllouerMalloc();
 noeud_t* AllouerNoeudNil();
 arbreRN_t* AllouerAbreRN();
 noeud_t* InitialisationArbreGN(arbreRN_t *t, int val);
+void gauche_rotation(arbreRN_t *t, noeud_t* enbas);
 void RechercheNoeudSential(arbreRN_t* t,noeud_t** actuelle, noeud_t** avant,int val);
 void RechercheNoeudSentialRecusitif(arbreRN_t* t, noeud_t** actuelle, noeud_t** avant, int val);
 noeud_t* InsertionNoeudAbreRG(arbreRN_t* t, int val);

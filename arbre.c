@@ -165,6 +165,8 @@ void gauche_rotation(arbreRN_t *t, noeud_t* enbas){
     enhaut->g = enbas;
     enbas->parent = enhaut;
 }
+
+
 void RNInsertReparer(arbreRN_t* t, noeud_t* noeud){
 	while(1){
 
@@ -176,7 +178,7 @@ void RNInsertReparer(arbreRN_t* t, noeud_t* noeud){
 				
 				noeud_t* tonton  = noeud -> parent -> parent -> d;
 			if(tonton != NULL && tonton -> couleur == rouge){
-			neoud -> parent -> couleur = noir;
+			noeud -> parent -> couleur = noir;
 			tonton -> parent -> parent -> couleur = rouge;
 
 			noeud = noeud -> parent -> parent;
@@ -192,6 +194,6 @@ void RNInsertReparer(arbreRN_t* t, noeud_t* noeud){
 
 
 		}
-	}
 }
+
 	
