@@ -1,7 +1,7 @@
 #include <stdio.h>
-#include "main.h"
 #include "util.h" 
 #include "arbre.h"
+#include "main.h"
 
 void AfficherResultatNilEstBienAllouerOuPas(){
 	arbreRN_t* arbre = AllouerAbreRN();
@@ -14,7 +14,7 @@ void TestLaFonction(){
 	AfficherResultatNilEstBienAllouerOuPas();
 
 }
-void AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(noeud_t* noeud, noeud_t* nil, int niveau){
+void AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(noeud_t* noeud, arbreRN_t* nil, int niveau){
 
 	int i;
 	if(noeud == nil){
@@ -40,6 +40,7 @@ void LeMessageInsertionFonction(){
 int main(void) {
     //TestLaFonction();
     AfficherLeMessage(LeMessageInsertionFonction);
+    printf("\n");
     arbreRN_t* arbre = AllouerAbreRN();
     InsertionNoeudAbreRG(arbre, 10);
     InsertionNoeudAbreRG(arbre, 20); 

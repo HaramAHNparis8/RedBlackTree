@@ -19,11 +19,7 @@ arbreRN_t* AllouerMallocArbreRN_t(){
 noeud_t* AllouerNoeudNil(){
 
 	noeud_t* nil = AllouerMallocNoeud_t();
-	if(nil == NULL){
-		
-		free(nil);
-		return NULL;
-	}
+	
 
 	nil -> couleur = noir;
 	nil -> cle = 0;
