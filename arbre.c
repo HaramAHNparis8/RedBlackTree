@@ -141,42 +141,29 @@ noeud_t* InsertionNoeudAbreRG(arbreRN_t* t, int val){
 }
 
 void gauche_rotation(arbreRN_t *t, noeud_t* enbas){
-	//le noeud nomme enhaut va en haut, et noeud va en bas
-	noeud_t* enhaut = enbas -> d;
-	enbas -> d = enhaut -> g;
+    // le noeud nommé enhaut va en haut, et noeud va en bas
+    noeud_t* enhaut = enbas->d;
+    enbas->d = enhaut->g;
 
-	if(enhaut -> g != t -> nil){
+    if (enhaut->g != t->nil) {
+        enhaut->g->parent = enbas;
+    }
 
-		enhaut -> g -> parent = enbas;
+    enhaut->parent = enbas->parent;
 
-	}
+    // si noeud enbas est la racine, alors enhaut devient la racine
+    if (enbas->parent == t->nil) {
+        t->racine = enhaut;
+    } else {
+        if (enbas == enbas->parent->g) {
+            enbas->parent->g = enhaut;
+        } else {
+            enbas->parent->d = enhaut;
+        }
+    }
 
-	enhaut -> parent = enbas -> parent;
-
-	//si noeud enbas la racine devient enhaut
-	if(enbas -> parent == t -> nil){
-
-		t -> racine = enhaut;
-
-	}
-	else if(enbas == enbas -> parent -> left){
-	enbas -> parent -> g = enhaut;
-
-
-	}
-	else{
-		
-		enbas -> parent -> g = enhaut;
-	}
-
-	//le noeud enbas change enhaut
-	enhaut -> g = enbas;
-	
-	//le noeud enhaut change enbas
-	
-	enbas -> parent = enhaut;
-	
-
+    enhaut->g = enbas;
+    enbas->parent = enhaut;
 }
 void RNInsertReparer(arbreRN_t* t, noeud_t* noeud){
 	while(1){
