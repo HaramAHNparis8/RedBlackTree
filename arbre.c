@@ -120,7 +120,7 @@ noeud_t* InsertionNoeudAbreRG(arbreRN_t* t, int val){
 
 // la deuxieme propostion
 
-	//RechercheNoeudSentialRecursif(t, &actuelle, &avant, val);
+	//RechercheNoeudSentialRecusitif(t, &actuelle, &avant, val);
 
 	noeud -> parent = avant;
 	if(val < avant -> cle){
@@ -162,6 +162,32 @@ void gauche_rotation(arbreRN_t *t, noeud_t* enbas){
     enbas->parent = enhaut;
 }
 
+void droit_rotation(arbreRN_t *t, noeud_t* enbas){
+    // le noeud nomme enhaut va en haut, et noeud va en bas
+    noeud_t* enhaut = enbas->g;
+    enbas->g = enhaut->d;
+
+    if (enhaut->d != t->nil) {
+        enhaut->d->parent = enbas;
+    }
+
+    enhaut->parent = enbas->parent;
+
+    // si noeud enbas est la racine, alors enhaut devient la racine
+    if (enbas->parent == t->nil) {
+        t->racine = enhaut;
+    } else {
+        if (enbas == enbas->parent->d) {
+            enbas->parent->d = enhaut;
+        } 
+	else {
+            enbas->parent->g = enhaut;
+        }
+    }
+
+    enhaut->d = enbas;
+    enbas->parent = enhaut;
+}
 
 void RNInsertReparer(arbreRN_t* t, noeud_t* noeud){
 	while(1){

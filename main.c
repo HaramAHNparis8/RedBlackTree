@@ -10,10 +10,6 @@ void AfficherResultatNilEstBienAllouerOuPas(){
 
 	
 }
-void TestLaFonction(){
-	AfficherResultatNilEstBienAllouerOuPas();
-
-}
 void AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(noeud_t* noeud, arbreRN_t* nil, int niveau){
 
 	int i;
@@ -37,14 +33,39 @@ void AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(noeud_t* noeud, arbreRN
 void LeMessageInsertionFonction(){
 	printf("Insertion des noeuds dans l'abre");
 }
+
+void LeMessageRotationGauche(){
+	printf("Effectuer une rotation gauche sur la racine");
+}
+void LeMessageRotationGaucheRes(){
+	printf("Effectuer une rotation gauche sur la racine le res");
+}
+void TestLaFonction(){
+	//AfficherResultatNilEstBienAllouerOuPas();
+	AfficherLeMessage(LeMessageInsertionFonction);
+    	printf("\n");
+    	arbreRN_t* arbre = AllouerAbreRN();
+    	InsertionNoeudAbreRG(arbre, 40);
+    	InsertionNoeudAbreRG(arbre, 30); 
+    	InsertionNoeudAbreRG(arbre, 20);
+    	InsertionNoeudAbreRG(arbre, 10);
+
+	AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(arbre -> racine, arbre -> nil, 0);
+	printf("\n");
+	AfficherLeMessage(LeMessageRotationGauche);
+	//gauche_rotation(arbre, arbre->racine);
+	printf("\n");  
+	//AfficherLeMessage(LeMessageRotationGaucheRes);
+	printf("\n");
+	//AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(arbre -> racine, arbre -> nil, 0);
+	droit_rotation(arbre, arbre -> racine);
+	printf("\n rotation gauche\n");
+	AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(arbre -> racine, arbre -> nil, 0);
+
+}
+
 int main(void) {
-    //TestLaFonction();
-    AfficherLeMessage(LeMessageInsertionFonction);
-    printf("\n");
-    arbreRN_t* arbre = AllouerAbreRN();
-    InsertionNoeudAbreRG(arbre, 10);
-    InsertionNoeudAbreRG(arbre, 20); 
-    InsertionNoeudAbreRG(arbre, 30);
-    AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(arbre -> racine, arbre -> nil, 0);   
+    TestLaFonction();
+     
     return 0;
 }
