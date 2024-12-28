@@ -40,32 +40,53 @@ void LeMessageRotationGauche(){
 void LeMessageRotationGaucheRes(){
 	printf("Effectuer une rotation gauche sur la racine le res");
 }
+
+void LeMessageRNArbreRes(){
+	printf("l'arbre RN est construit");
+}
 void TestLaFonction(){
 	//AfficherResultatNilEstBienAllouerOuPas();
-	AfficherLeMessage(LeMessageInsertionFonction);
+	//AfficherLeMessage(LeMessageInsertionFonction);
     	printf("\n");
     	arbreRN_t* arbre = AllouerAbreRN();
     	InsertionNoeudAbreRG(arbre, 40);
     	InsertionNoeudAbreRG(arbre, 30); 
     	InsertionNoeudAbreRG(arbre, 20);
     	InsertionNoeudAbreRG(arbre, 10);
-
-	AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(arbre -> racine, arbre -> nil, 0);
+	InsertionNoeudAbreRG(arbre, 50);
+	InsertionNoeudAbreRG(arbre, 5);
+	AfficherLeMessage(LeMessageRNArbreRes);
 	printf("\n");
-	AfficherLeMessage(LeMessageRotationGauche);
+	AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(arbre -> racine, arbre -> nil, 0);
+	//printf("\n");
+	//AfficherLeMessage(LeMessageRotationGauche);
 	//gauche_rotation(arbre, arbre->racine);
 	printf("\n");  
 	//AfficherLeMessage(LeMessageRotationGaucheRes);
 	printf("\n");
 	//AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(arbre -> racine, arbre -> nil, 0);
-	droit_rotation(arbre, arbre -> racine);
-	printf("\n rotation gauche\n");
-	AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(arbre -> racine, arbre -> nil, 0);
+	//droit_rotation(arbre, arbre -> racine);
+	//printf("\n rotation gauche\n");
+	//AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(arbre -> racine, arbre -> nil, 0);
 
 }
 
 int main(void) {
-    TestLaFonction();
+    //TestLaFonction();
+    char choix;
+    arbreRN_t* arbre = AllouerAbreRN();
+    //je vais creer le logique pour si l'utilisateur entre Y, on ajoute le noeud sinon le programme est fini. demain. je veux dormir un peu...
+    while(1){
+
+		if(choix == 'N'){
+
+			break;
+		}
+
+		else{
+
+		}
+	}
      
     return 0;
 }

@@ -97,44 +97,6 @@ void RechercheNoeudSentialRecusitif(arbreRN_t* t, noeud_t** actuelle, noeud_t** 
     }
 }
 
-noeud_t* InsertionNoeudAbreRG(arbreRN_t* t, int val){
-	noeud_t* noeud = InitialisationArbreGN(t,val);
-	//si l'arbre est vide on ajoute et apres retourner les noeuds
-	
-	if(t -> racine == t -> nil){
-		
-		t -> racine = noeud;
-		t -> racine -> couleur = noir;
-		
-		return noeud;
-
-	}
-	
-// la premier propostion
-
-	noeud_t* actuelle = t -> racine; // quand on ajoute les noeuds c'est noeud compare avec le noeud nouveau
-	noeud_t* avant = t -> nil; // ce noeud devient parent noeud
-	
-	RechercheNoeudSential(t, &actuelle, &avant, val);
-//s'il y aurait bcp de data, ca cause l'erreur donc j'use la premiere propostion
-
-// la deuxieme propostion
-
-	//RechercheNoeudSentialRecusitif(t, &actuelle, &avant, val);
-
-	noeud -> parent = avant;
-	if(val < avant -> cle){
-
-		avant -> g = noeud;
-
-	}
-	else{
-		avant -> d = noeud;
-	}
-
-	return noeud;
-
-}
 
 void gauche_rotation(arbreRN_t *t, noeud_t* enbas){
     // le noeud nommé enhaut va en haut, et noeud va en bas
@@ -189,34 +151,97 @@ void droit_rotation(arbreRN_t *t, noeud_t* enbas){
     enbas->parent = enhaut;
 }
 
-void RNInsertReparer(arbreRN_t* t, noeud_t* noeud){
-	while(1){
+void RNInsertReparer(arbreRN_t* t, noeud_t* noeud) {
+    // Tant que le noeud n'est pas la racine et que son parent est rouge
+    while (noeud != t->racine && noeud->parent->couleur == rouge) {
+        // Le parent du noeud est le fils gauche du grand-parent
+        if (noeud->parent == noeud->parent->parent->g) {
+            noeud_t* tonton = noeud->parent->parent->d;
 
-		if(noeud != t -> racine && noeud -> parent -> couleur == rouge){
-				break;
-			}
+            // Case 1: Parent et oncle sont rouges
+            if (tonton != NULL && tonton->couleur == rouge) {
+                noeud->parent->couleur = noir;
+                tonton->couleur = noir;
+                noeud->parent->parent->couleur = rouge;
+                noeud = noeud->parent->parent; // Remonter au grand-parent
+            } 
+	    else {
+                // Case 2: Oncle est noir et le noeud est un fils droit
+                if (noeud == noeud->parent->d) {
+                    noeud = noeud->parent;
+                    gauche_rotation(t, noeud);
+                }
+                // Case 3: Oncle est noir et le noeud est un fils gauche
+                noeud->parent->couleur = noir;
+                noeud->parent->parent->couleur = rouge;
+                droit_rotation(t, noeud->parent->parent);
+            }
+        } 
+	else { 
+	    // Le parent du noeud est le fils droit du grand-parent
+            noeud_t* tonton = noeud->parent->parent->g;
 
-		if(noeud -> parent == noeud -> parent -> parent -> g){
-				
-				noeud_t* tonton  = noeud -> parent -> parent -> d;
-			if(tonton != NULL && tonton -> couleur == rouge){
-			noeud -> parent -> couleur = noir;
-			tonton -> parent -> parent -> couleur = rouge;
+            // Case 4: Parent et oncle sont rouges
+            if (tonton != NULL && tonton->couleur == rouge) {
+                noeud->parent->couleur = noir;
+                tonton->couleur = noir;
+                noeud->parent->parent->couleur = rouge;
+                noeud = noeud->parent->parent; // Remonter au grand-parent
+            } 
+	    else {
+                // Case 5: Oncle est noir et le noeud est un fils gauche
+                if (noeud == noeud->parent->g) {
+                    noeud = noeud->parent;
+                    droit_rotation(t, noeud);
+                }
+                // Case 6: Oncle est noir et le noeud est un fils droit
+                noeud->parent->couleur = noir;
+                noeud->parent->parent->couleur = rouge;
+                gauche_rotation(t, noeud->parent->parent);
+            }
+        }
+    }
 
-			noeud = noeud -> parent -> parent;
-
-				
-				}
-			else{
-			//je commence mtn
-
-
-				}
-
-			}
-
-
-		}
+    //pour  assurer que la racine est toujours noire
+    t->racine->couleur = noir;
 }
 
+noeud_t* InsertionNoeudAbreRG(arbreRN_t* t, int val){
+	noeud_t* noeud = InitialisationArbreGN(t,val);
+	//si l'arbre est vide on ajoute et apres retourner les noeuds
 	
+	if(t -> racine == t -> nil){
+		
+		t -> racine = noeud;
+		t -> racine -> couleur = noir;
+		
+		return noeud;
+
+	}
+	
+// la premier propostion
+
+	noeud_t* actuelle = t -> racine; // quand on ajoute les noeuds c'est noeud compare avec le noeud nouveau
+	noeud_t* avant = t -> nil; // ce noeud devient parent noeud
+	
+	RechercheNoeudSential(t, &actuelle, &avant, val);
+//s'il y aurait bcp de data, ca cause l'erreur donc j'use la premiere propostion
+
+// la deuxieme propostion
+
+	//RechercheNoeudSentialRecusitif(t, &actuelle, &avant, val);
+
+	noeud -> parent = avant;
+	if(val < avant -> cle){
+
+		avant -> g = noeud;
+
+	}
+	else{
+		avant -> d = noeud;
+	}
+	RNInsertReparer(t, noeud);	
+	return noeud;
+
+}
+
