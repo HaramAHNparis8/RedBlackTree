@@ -208,6 +208,7 @@ void RNInsertReparer(arbreRN_t* t, noeud_t* noeud){
 				
 				}
 			else{
+			//je commence mtn
 
 
 				}
