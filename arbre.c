@@ -245,3 +245,27 @@ noeud_t* InsertionNoeudAbreRG(arbreRN_t* t, int val){
 
 }
 
+void echange(arbreRN_t* t, noeud_t* a, noeud_t* b){
+
+	if(noeud -> parent == t -> nil){
+
+		t -> racine = b;
+
+	}
+	else if(a = a -> parent -> g){
+		
+		a -> parent -> g = b;
+
+	}
+	else{
+		a -> parent -> g = b;
+	}
+	if(b != t -> nil){
+
+		b -> parent = a -> parent;
+
+	}
+
+
+}
+

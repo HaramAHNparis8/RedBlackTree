@@ -44,6 +44,10 @@ void LeMessageRotationGaucheRes(){
 void LeMessageRNArbreRes(){
 	printf("l'arbre RN est construit");
 }
+
+
+
+
 void TestLaFonction(){
 	//AfficherResultatNilEstBienAllouerOuPas();
 	//AfficherLeMessage(LeMessageInsertionFonction);
@@ -73,7 +77,8 @@ void TestLaFonction(){
 
 int main(void) {
     //TestLaFonction();
-    char choix;
+    char choix = '\0';
+
     arbreRN_t* arbre = AllouerAbreRN();
     //je vais creer le logique pour si l'utilisateur entre Y, on ajoute le noeud sinon le programme est fini. demain. je veux dormir un peu...
     while(1){

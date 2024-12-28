@@ -1,0 +1,28 @@
+il faut faire un logique pour le boucle des utilisateurs
+enfain je peux travailler sur la fonction pour reparer l'ordre >< yeahgit add .git add .git add .git add .
+la fonction pour rotation et la circulation de noeud marchent tres bien j'ai rencontre l'erreur parce que j'ai alloue mauvais valeur a la prochaine fois il faut vraiment vraiment faire attention je perds bcp de temps
+l'erreur est fixe
+l'erreur main.c ne cherche pas structure
+je commence a tester mais je ne suis pas sur vraiment ca marcher mais j'espere
+j'ai un peu fixe mais je ne sais pas trop qu'il y a pas l'erreur j'ai trop peur
+finir la fonction pour la rotation gauche mais j'ai pas encore ameliore
+commence a creer la fonction pour la rotation
+je dois creer la fonction pour reparer l'arbre apres avoir insere et puis je vais finir bientot
+commence a creer la fonction reparer les arbres et puis il faut creer la fonction pour estimer le temps pris
+insertion
+la fonction de l'insertion est fini et aussi il y a deux propositions
+La creation defonction pour initialiser le noeud RN
+la fonction pour structurer la noeud nil est bien marche mais je pensais que ca ne marcherait pas mais ca marche j'ai peur
+ok, les erreurs sont fixe mais il faut quand meme trouver pq element_int ne marche pas au structure vrm
+finir a tester j'espere ca marcher.. je veux dormir et nettoyer mon studio
+creation la fonction pour structurer les fonction nil et testcode mais avant d'execution et c'est le moment de creer le fichier main.h
+creation de fichier de l'arbre et la fonction pour structurer l'abre rouge et noir et la structure
+la division de fichier avec Makefile
+creation de fichier util.h
+finalisation de la fonction pour entrer le valeur
+le probleme est resoulu c'etait le probleme buffer....................
+c'est pas vraiment correspondant a mon estimation mais ca marche en tous cas
+l'erreur fixe mais c'est pas mon estimation
+ll'erreur
+le boucle marche mais il affiche plusieur lignes
+rencontre le probleme de l'erreur

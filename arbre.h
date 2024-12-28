@@ -41,5 +41,6 @@ void RechercheNoeudSentialRecusitif(arbreRN_t* t, noeud_t** actuelle, noeud_t** 
 noeud_t* InsertionNoeudAbreRG(arbreRN_t* t, int val);
 void droit_rotation(arbreRN_t *t, noeud_t* enbas);
 void RNInsertReparer(arbreRN_t* t, noeud_t* noeud);
+void echange(arbreRN_t* t, noeud_t* a, noeud_t* b);
 
 #endif
