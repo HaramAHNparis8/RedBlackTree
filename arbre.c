@@ -285,36 +285,36 @@ void ArbreSupprimer(arbreRN_t* t, noeud_t* v) {
     couleur_t CouleurOriginal = supprimer->couleur; // La couleur d'origine du noeud à supprimer
     noeud_t* base;
 
-    if (v->g == t->nil) {
+    if (v -> g == t -> nil) {
         // Remplacer v par son fils droit
         base = v->d;
-        echange(t, v, v->d);
+        echange(t, v, v -> d);
     } 
-    else if (v->d == t->nil) {
+    else if (v -> d == t -> nil) {
         // Remplacer v par son fils gauche
-        base = v->g;
-        echange(t, v, v->g);
+        base = v -> g;
+        echange(t, v, v -> g);
     } 
     else {
         // Trouver le successeur
-        supprimer = min(t, v->d);
-        CouleurOriginal = supprimer->couleur;
-        base = supprimer->d;
+        supprimer = min(t, v -> d);
+        CouleurOriginal = supprimer -> couleur;
+        base = supprimer -> d;
 
-        if (supprimer != v->d) {
+        if (supprimer != v -> d) {
             // Remplacer le successeur par son sous-arbre droit
             echange(t, supprimer, supprimer->d);
-            supprimer->d = v->d;
-            supprimer->d->parent = supprimer;
+            supprimer -> d = v -> d;
+            supprimer -> d -> parent = supprimer;
         } 
 	else {
             base->parent = supprimer;
         }
 
         echange(t, v, supprimer);
-        supprimer->g = v->g;
-        supprimer->g->parent = supprimer;
-        supprimer->couleur = v->couleur;
+        supprimer -> g = v -> g;
+        supprimer -> g -> parent = supprimer;
+        supprimer -> couleur = v -> couleur;
     }
 
     // Liberer la memoire du noeud supprime
@@ -329,7 +329,8 @@ void ReparerFrereRougeCase1(arbreRN_t* t, noeud_t* a, noeud_t* b) {
     if (b -> couleur == rouge) { 
         b -> couleur = noir; 
         a -> parent -> couleur = rouge; 
-        gauche_rotation(t, a->parent); 
+        gauche_rotation(t, a->parent);
+	*b = a->parent->d; 
     }
 }
 

@@ -2,7 +2,8 @@
 #include "util.h" 
 #include "arbre.h"
 #include "main.h"
-
+#include <wchar.h>
+#include <locale.h>
 void AfficherResultatNilEstBienAllouerOuPas(){
 	arbreRN_t* arbre = AllouerAbreRN();
 	printf("\n1 est bien allouer mais si c'est 0 non\n");
@@ -42,7 +43,9 @@ void LeMessageRotationGaucheRes(){
 }
 
 void LeMessageRNArbreRes(){
-	printf("l'arbre RN est construit");
+	setlocale(LC_ALL, "");	
+	wchar_t smile_emoji[] = L"\U0001F60A";
+	wprintf(L"스친이 최고 스친이 짱이얌 ",smile_emoji);
 }
 
 
@@ -61,7 +64,7 @@ void TestLaFonction(){
 	InsertionNoeudAbreRG(arbre, 5);
 	AfficherLeMessage(LeMessageRNArbreRes);
 	printf("\n");
-	AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(arbre -> racine, arbre -> nil, 0);
+	//AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(arbre -> racine, arbre -> nil, 0);
 	//printf("\n");
 	//AfficherLeMessage(LeMessageRotationGauche);
 	//gauche_rotation(arbre, arbre->racine);
@@ -76,12 +79,11 @@ void TestLaFonction(){
 }
 
 int main(void) {
-    //TestLaFonction();
+    TestLaFonction();
     char choix = '\0';
-
     arbreRN_t* arbre = AllouerAbreRN();
     //je vais creer le logique pour si l'utilisateur entre Y, on ajoute le noeud sinon le programme est fini. demain. je veux dormir un peu...
-    while(1){
+/*    while(1){
 
 		if(choix == 'N'){
 
@@ -92,6 +94,6 @@ int main(void) {
 
 		}
 	}
-     
+*/     
     return 0;
-}
+} 
