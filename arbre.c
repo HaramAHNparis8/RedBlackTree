@@ -280,34 +280,74 @@ noeud_t* min(arbreRN_t* t, noeud_t* min){
 	return min;
 }
 
-void ArbreSupprimer(arbreRN_t* t, noeud_t* v){
+void ArbreSupprimer(arbreRN_t* t, noeud_t* v) {
+    noeud_t* supprimer = v; // Le noeud à supprimer
+    couleur_t CouleurOriginal = supprimer->couleur; // La couleur d'origine du noeud à supprimer
+    noeud_t* base;
+
+    if (v->g == t->nil) {
+        // Remplacer v par son fils droit
+        base = v->d;
+        echange(t, v, v->d);
+    } 
+    else if (v->d == t->nil) {
+        // Remplacer v par son fils gauche
+        base = v->g;
+        echange(t, v, v->g);
+    } 
+    else {
+        // Trouver le successeur
+        supprimer = min(t, v->d);
+        CouleurOriginal = supprimer->couleur;
+        base = supprimer->d;
+
+        if (supprimer != v->d) {
+            // Remplacer le successeur par son sous-arbre droit
+            echange(t, supprimer, supprimer->d);
+            supprimer->d = v->d;
+            supprimer->d->parent = supprimer;
+        } 
+	else {
+            base->parent = supprimer;
+        }
+
+        echange(t, v, supprimer);
+        supprimer->g = v->g;
+        supprimer->g->parent = supprimer;
+        supprimer->couleur = v->couleur;
+    }
+
+    // Liberer la memoire du noeud supprime
+    free(v);
+
+    // Si un noeud noir est supprime, reequilibrer l'arbre
+    if (CouleurOriginal == NOIR) {
+        ReparerSupprimer(t, base);
+    }
+}
+void ReparerFrereRougeCase1(arbreRN_t* t, noeud_t* a, noeud_t* b) {
+    if (b -> couleur == rouge) { 
+        b -> couleur = noir; 
+        a -> parent -> couleur = rouge; 
+        gauche_rotation(t, a->parent); 
+    }
+}
+
+void SupprimerReparer(arbreRN_t *t, noeud_t *v){
 	
-	noeud_t *supprimer = v;// le noeud a supprimer
-	couleur_t CouleurOriginal = supprimer -> couleur;// La couleur d'origine du noeud à supprimer
-	noeud_t* base;
+	//le noeud v ne doit pas etre toujours la racinemais la couleur de noeud doit etre noir dans le boucle while
+	while(1){
 
-	if(v -> g == t -> nil){
-	// Remplacer p par son fils droit
-		base = p -> d;
-		echange(t, v, v -> d);
-	}
-	else if(v -> g == t -> nil){
-		base = v -> g;
-		echange(t, v, v -> g);
+		if(v != t -> racine && v -> couleur == noir){
+			break;
+		}
+		noeud_t* frere = v -> parent -> d;
+		ReparerFrereRouge(t, v, frere);//case1
+		
 
 	}
-	else{
 
-		supprimer = min(t, v -> d); //rechercher les succeseur
-		CouleurOriginal = supprimer -> couleur;
-		base = supprimer -> d;
-		supprimer -> d -> parent = supprimer;
-	}
-	echange(t, v, supprimer);
-	supprimer -> g = v = v -> g;
-	supprimer -> g -> parent = supprimer;
-	supprimer -> couleur = v -> couleur;
+	
 
 
 }
-

@@ -43,4 +43,5 @@ void droit_rotation(arbreRN_t *t, noeud_t* enbas);
 void RNInsertReparer(arbreRN_t* t, noeud_t* noeud);
 void echange(arbreRN_t* t, noeud_t* a, noeud_t* b);
 void ArbreSupprimer(arbreRN_t* t, noeud_t* v);
+void SupprimerReparer(arbreRN_t *t, noeud_t * v);
 #endif
