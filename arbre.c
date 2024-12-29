@@ -252,7 +252,7 @@ void echange(arbreRN_t* t, noeud_t* a, noeud_t* b){
 		t -> racine = b;
 
 	}
-	else if(a = a -> parent -> g){
+	else if(a == a -> parent -> g){
 		
 		a -> parent -> g = b;
 
@@ -265,6 +265,48 @@ void echange(arbreRN_t* t, noeud_t* a, noeud_t* b){
 		b -> parent = a -> parent;
 
 	}
+
+
+}
+
+noeud_t* min(arbreRN_t* t, noeud_t* min){
+
+	  while(min -> g != t -> nil){
+
+		min = min -> g;
+
+	}
+
+	return min;
+}
+
+void ArbreSupprimer(arbreRN_t* t, noeud_t* v){
+	
+	noeud_t *supprimer = v;// le noeud a supprimer
+	couleur_t CouleurOriginal = supprimer -> couleur;// La couleur d'origine du noeud à supprimer
+	noeud_t* base;
+
+	if(v -> g == t -> nil){
+	// Remplacer p par son fils droit
+		base = p -> d;
+		echange(t, v, v -> d);
+	}
+	else if(v -> g == t -> nil){
+		base = v -> g;
+		echange(t, v, v -> g);
+
+	}
+	else{
+
+		supprimer = min(t, v -> d); //rechercher les succeseur
+		CouleurOriginal = supprimer -> couleur;
+		base = supprimer -> d;
+		supprimer -> d -> parent = supprimer;
+	}
+	echange(t, v, supprimer);
+	supprimer -> g = v = v -> g;
+	supprimer -> g -> parent = supprimer;
+	supprimer -> couleur = v -> couleur;
 
 
 }
