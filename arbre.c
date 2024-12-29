@@ -247,7 +247,7 @@ noeud_t* InsertionNoeudAbreRG(arbreRN_t* t, int val){
 
 void echange(arbreRN_t* t, noeud_t* a, noeud_t* b){
 
-	if(noeud -> parent == t -> nil){
+	if(a -> parent == t -> nil){
 
 		t -> racine = b;
 
@@ -278,6 +278,84 @@ noeud_t* min(arbreRN_t* t, noeud_t* min){
 	}
 
 	return min;
+}
+
+
+void ReparerFrereRougeCase1(arbreRN_t* t, noeud_t* a, noeud_t* b) {
+    if (b->couleur == rouge) { 
+        b->couleur = noir; 
+        a->parent->couleur = rouge; 
+        gauche_rotation(t, a -> parent);
+        b = a - >parent -> d;
+    }
+}
+
+void ReparerFrereRougeCase2ET3(arbreRN_t* t, noeud_t* frere, noeud_t** v) {
+   
+    if (frere->g->couleur == noir && frere->d->couleur == noir) {
+        frere->couleur = rouge; 
+        *v = (*v) -> parent; 
+    } 
+    else {
+       
+        if (frere ->d -> couleur == noir) {
+            frere -> g ->couleur = noir; 
+            frere -> couleur = rouge;
+            droit_rotation(t, frere); 
+            frere = (*v) -> parent -> d; 
+        }
+    }
+}
+
+void ReparerFrereRougeCase4(arbreRN_t* t, noeud_t* frere, noeud_t* v){
+	
+            frere -> couleur = v -> parent -> couleur;
+            v -> parent -> couleur = noir; 
+            frere -> d -> couleur = noir; 
+            gauche_rotation(t, v -> parent);
+            v = t -> racine; 
+
+}
+void ReparerFrereRougeCase6(arbreRN_t* t, noeud_t* frere, noeud_t** v) {
+    if (frere->g->couleur == noir && frere->d->couleur == noir) {
+        frere->couleur = rouge; 
+        *v = (*v)->parent; 
+    }
+}
+
+void ReparerFrereRougeCase7(arbreRN_t* t, noeud_t* frere) {
+    if (frere->d->couleur == noir) {
+        frere->g->couleur = noir; 
+        frere->couleur = rouge; 
+        droit_rotation(t, frere); 
+    }
+}
+
+void ReparerFrereRougeCase8(arbreRN_t* t, noeud_t* frere, noeud_t** v) {
+    frere->couleur = (*v)->parent->couleur; 
+    (*v)->parent->couleur = noir; 
+    frere->g->couleur = noir; 
+    gauche_rotation(t, (*v)->parent); 
+    *v = t->racine; 
+}
+void SupprimerReparer(arbreRN_t *t, noeud_t *v){
+	
+	//le noeud v ne doit pas etre toujours la racinemais la couleur de noeud doit etre noir dans le boucle while
+	while(1){
+
+		if(v != t -> racine && v -> couleur == noir){
+			break;
+		}
+		noeud_t* frere = v -> parent -> d;
+		ReparerFrereRougeCase1(t, v, frere);//case1
+		ReparerFrereRougeCase2ET3(t, frere, v);//case 2 et 3
+		ReparerFrereRougeCase4(t,frere,v);//case 4
+		ReparerFrereRougeCase6(t, frere, &v);
+		ReparerFrereRougeCase7(t, frere);
+		ReparerFrereRougeCase8(t, frere, &v);
+
+	}
+	x->color = noir;
 }
 
 void ArbreSupprimer(arbreRN_t* t, noeud_t* v) {
@@ -321,34 +399,15 @@ void ArbreSupprimer(arbreRN_t* t, noeud_t* v) {
     free(v);
 
     // Si un noeud noir est supprime, reequilibrer l'arbre
-    if (CouleurOriginal == NOIR) {
-        ReparerSupprimer(t, base);
-    }
-}
-void ReparerFrereRougeCase1(arbreRN_t* t, noeud_t* a, noeud_t* b) {
-    if (b -> couleur == rouge) { 
-        b -> couleur = noir; 
-        a -> parent -> couleur = rouge; 
-        gauche_rotation(t, a->parent);
-	*b = a->parent->d; 
+    if (CouleurOriginal == noir) {
+        SupprimerReparer(t, base);
     }
 }
 
-void SupprimerReparer(arbreRN_t *t, noeud_t *v){
-	
-	//le noeud v ne doit pas etre toujours la racinemais la couleur de noeud doit etre noir dans le boucle while
-	while(1){
-
-		if(v != t -> racine && v -> couleur == noir){
-			break;
-		}
-		noeud_t* frere = v -> parent -> d;
-		ReparerFrereRouge(t, v, frere);//case1
-		
-
-	}
-
-	
 
 
-}
+
+
+
+
+

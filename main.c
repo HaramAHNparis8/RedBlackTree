@@ -4,6 +4,7 @@
 #include "main.h"
 #include <wchar.h>
 #include <locale.h>
+
 void AfficherResultatNilEstBienAllouerOuPas(){
 	arbreRN_t* arbre = AllouerAbreRN();
 	printf("\n1 est bien allouer mais si c'est 0 non\n");
@@ -42,10 +43,11 @@ void LeMessageRotationGaucheRes(){
 	printf("Effectuer une rotation gauche sur la racine le res");
 }
 
-void LeMessageRNArbreRes(){
-	setlocale(LC_ALL, "");	
-	wchar_t smile_emoji[] = L"\U0001F60A";
-	wprintf(L"스친이 최고 스친이 짱이얌 ",smile_emoji);
+void LeMessageRNArbreRes() {
+    setlocale(LC_ALL, ""); // UTF-8 set local
+
+    wchar_t smile_emoji[] = L"\U0001F60A";
+    wprintf(L"%ls l'abrRN  %ls", smile_emoji, smile_emoji); // liste caractere %ls affiche 
 }
 
 
