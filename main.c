@@ -65,14 +65,15 @@ void TestLaFonction(){
 	InsertionNoeudAbreRG(arbre, 50);
 	InsertionNoeudAbreRG(arbre, 5);
 	AfficherLeMessage(LeMessageRNArbreRes);
-	printf("\n");
-	//AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(arbre -> racine, arbre -> nil, 0);
+	printf("\n");	
+	AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(arbre -> racine, arbre -> nil, 0);
+	
 	//printf("\n");
 	//AfficherLeMessage(LeMessageRotationGauche);
 	//gauche_rotation(arbre, arbre->racine);
-	printf("\n");  
+	//printf("\n");  
 	//AfficherLeMessage(LeMessageRotationGaucheRes);
-	printf("\n");
+	//printf("\n");
 	//AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(arbre -> racine, arbre -> nil, 0);
 	//droit_rotation(arbre, arbre -> racine);
 	//printf("\n rotation gauche\n");

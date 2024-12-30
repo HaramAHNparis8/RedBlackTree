@@ -5,6 +5,8 @@
 #include "util.h"
 #include "main.h"
 
+typedef int element_val;
+
 typedef enum couleur{ 
 	rouge, 
 	noir 
@@ -14,7 +16,7 @@ typedef enum couleur{
 
 typedef struct noeud {
   couleur_t couleur;
-  int cle; // avant j'utilise element_int dans le fichier util.h mais il ne recherche pas - le probleme que je regle apres
+  element_val cle; // avant j'utilise element_int dans le fichier util.h mais il ne recherche pas - le probleme que je regle apres
 
   struct noeud * parent; 
   struct noeud * g; 
@@ -42,7 +44,13 @@ noeud_t* InsertionNoeudAbreRG(arbreRN_t* t, int val);
 void droit_rotation(arbreRN_t *t, noeud_t* enbas);
 void RNInsertReparer(arbreRN_t* t, noeud_t* noeud);
 void echange(arbreRN_t* t, noeud_t* a, noeud_t* b);
+noeud_t* RechercherNoeud(arbreRN_t* t,element_val val);
 void ReparerFrereRougeCase1(arbreRN_t* t, noeud_t* a, noeud_t* b);
+void ReparerFrereRougeCase2ET3(arbreRN_t* t, noeud_t* frere, noeud_t** v);
+void ReparerFrereRougeCase4(arbreRN_t* t, noeud_t* frere, noeud_t* v);
+void ReparerFrereRougeCase6(noeud_t* frere, noeud_t** v);
+void ReparerFrereRougeCase7(arbreRN_t* t, noeud_t* frere);
+void ReparerFrereRougeCase8(arbreRN_t* t, noeud_t* frere, noeud_t** v);
 void ArbreSupprimer(arbreRN_t* t, noeud_t* v);
 void SupprimerReparer(arbreRN_t *t, noeud_t * v);
 #endif

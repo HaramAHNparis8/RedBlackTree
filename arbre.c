@@ -282,17 +282,17 @@ noeud_t* min(arbreRN_t* t, noeud_t* min){
 
 
 void ReparerFrereRougeCase1(arbreRN_t* t, noeud_t* a, noeud_t* b) {
-    if (b->couleur == rouge) { 
-        b->couleur = noir; 
-        a->parent->couleur = rouge; 
+    if (b -> couleur == rouge) { 
+        b -> couleur = noir; 
+        a -> parent -> couleur = rouge; 
         gauche_rotation(t, a -> parent);
-        b = a - >parent -> d;
+        b = a ->parent -> d;
     }
 }
 
 void ReparerFrereRougeCase2ET3(arbreRN_t* t, noeud_t* frere, noeud_t** v) {
    
-    if (frere->g->couleur == noir && frere->d->couleur == noir) {
+    if (frere -> g -> couleur == noir && frere -> d -> couleur == noir) {
         frere->couleur = rouge; 
         *v = (*v) -> parent; 
     } 
@@ -316,28 +316,30 @@ void ReparerFrereRougeCase4(arbreRN_t* t, noeud_t* frere, noeud_t* v){
             v = t -> racine; 
 
 }
-void ReparerFrereRougeCase6(arbreRN_t* t, noeud_t* frere, noeud_t** v) {
-    if (frere->g->couleur == noir && frere->d->couleur == noir) {
+void ReparerFrereRougeCase6(noeud_t* frere, noeud_t** v) {
+    if (frere -> g -> couleur == noir && frere -> d -> couleur == noir) {
         frere->couleur = rouge; 
-        *v = (*v)->parent; 
+        *v = (*v) -> parent; 
     }
 }
 
 void ReparerFrereRougeCase7(arbreRN_t* t, noeud_t* frere) {
-    if (frere->d->couleur == noir) {
-        frere->g->couleur = noir; 
-        frere->couleur = rouge; 
+    if (frere -> d -> couleur == noir) {
+        frere -> g -> couleur = noir; 
+        frere -> couleur = rouge; 
         droit_rotation(t, frere); 
     }
 }
 
 void ReparerFrereRougeCase8(arbreRN_t* t, noeud_t* frere, noeud_t** v) {
-    frere->couleur = (*v)->parent->couleur; 
-    (*v)->parent->couleur = noir; 
-    frere->g->couleur = noir; 
-    gauche_rotation(t, (*v)->parent); 
-    *v = t->racine; 
+    frere -> couleur = (*v) -> parent -> couleur; 
+    (*v) -> parent -> couleur = noir; 
+    frere -> g -> couleur = noir; 
+    gauche_rotation(t, (*v) -> parent); 
+    *v = t -> racine; 
 }
+
+
 void SupprimerReparer(arbreRN_t *t, noeud_t *v){
 	
 	//le noeud v ne doit pas etre toujours la racinemais la couleur de noeud doit etre noir dans le boucle while
@@ -346,26 +348,46 @@ void SupprimerReparer(arbreRN_t *t, noeud_t *v){
 		if(v != t -> racine && v -> couleur == noir){
 			break;
 		}
-		noeud_t* frere = v -> parent -> d;
+		noeud_t* frere = (v == v -> parent -> g) ? v -> parent -> d : v -> parent -> g;
+
 		ReparerFrereRougeCase1(t, v, frere);//case1
-		ReparerFrereRougeCase2ET3(t, frere, v);//case 2 et 3
+		ReparerFrereRougeCase2ET3(t, frere, &v);//case 2 et 3
 		ReparerFrereRougeCase4(t,frere,v);//case 4
-		ReparerFrereRougeCase6(t, frere, &v);
+		ReparerFrereRougeCase6(frere, &v);
 		ReparerFrereRougeCase7(t, frere);
 		ReparerFrereRougeCase8(t, frere, &v);
 
 	}
-	x->color = noir;
+	v -> couleur = noir;
+}
+
+noeud_t* RechercherNoeud(arbreRN_t* t,element_val val){
+	noeud_t* courant = t -> racine;
+	while(courant != t -> nil && courant -> cle != val){
+		if(val < courant -> cle){
+
+			courant = courant -> g;
+
+		}
+		else{
+
+			courant = courant -> d;
+		}	
+
+
+	}
+
+	return courant;
 }
 
 void ArbreSupprimer(arbreRN_t* t, noeud_t* v) {
     noeud_t* supprimer = v; // Le noeud à supprimer
-    couleur_t CouleurOriginal = supprimer->couleur; // La couleur d'origine du noeud à supprimer
+    couleur_t CouleurOriginal = supprimer -> couleur; // La couleur d'origine du noeud à supprimer
     noeud_t* base;
 
     if (v -> g == t -> nil) {
         // Remplacer v par son fils droit
-        base = v->d;
+        base = v -> d;
         echange(t, v, v -> d);
     } 
     else if (v -> d == t -> nil) {
@@ -386,7 +408,7 @@ void ArbreSupprimer(arbreRN_t* t, noeud_t* v) {
             supprimer -> d -> parent = supprimer;
         } 
 	else {
-            base->parent = supprimer;
+            base -> parent = supprimer;
         }
 
         echange(t, v, supprimer);
@@ -403,11 +425,5 @@ void ArbreSupprimer(arbreRN_t* t, noeud_t* v) {
         SupprimerReparer(t, base);
     }
 }
-
-
-
-
-
-
 
 
