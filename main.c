@@ -61,11 +61,20 @@ void TestLaFonction(){
     	InsertionNoeudAbreRG(arbre, 40);
     	InsertionNoeudAbreRG(arbre, 30); 
     	InsertionNoeudAbreRG(arbre, 20);
-    	InsertionNoeudAbreRG(arbre, 10);
+    	InsertionNoeudAbreRG(arbre, 15);
 	InsertionNoeudAbreRG(arbre, 50);
 	InsertionNoeudAbreRG(arbre, 5);
 	AfficherLeMessage(LeMessageRNArbreRes);
 	printf("\n");	
+	AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(arbre -> racine, arbre -> nil, 0);
+	noeud_t* noeud_a_supprimer = RechercherNoeud(arbre,40);
+	if (noeud_a_supprimer != arbre->nil) {
+        	ArbreSupprimer(arbre, noeud_a_supprimer);
+	} 
+	else {
+		printf("Le noeud avec clé 15 n'existe pas.\n");
+    	}
+	printf("\n");
 	AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(arbre -> racine, arbre -> nil, 0);
 	
 	//printf("\n");
@@ -78,7 +87,6 @@ void TestLaFonction(){
 	//droit_rotation(arbre, arbre -> racine);
 	//printf("\n rotation gauche\n");
 	//AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(arbre -> racine, arbre -> nil, 0);
-
 }
 
 int main(void) {
