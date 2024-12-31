@@ -2,6 +2,30 @@
 #include "arbre.h"
 #include "main.h"
 
+
+element_val* TableauPourRepare(int taille) {
+    element_val* tab = (element_val*)malloc(taille * sizeof(element_val));
+    return tab;
+}
+
+void SauvegarderVal(noeud_t* noeud, noeud_t* nil, element_val* tab, int indice, element_val v) {
+    if (noeud == nil) {
+        return;
+    }
+
+   
+    SauvegarderVal(noeud->g, nil, tab, indice, v);
+
+   
+    if (noeud -> cle != v) {
+        tab[indice] = noeud -> cle;
+        indice++;
+    }
+
+
+    SauvegarderVal(noeud -> d, nil, tab, indice, v);
+}
+
 noeud_t* AllouerMallocNoeud_t(){
 
 	noeud_t* noeud = (noeud_t *)malloc(sizeof(noeud_t));
@@ -384,6 +408,41 @@ void ArbreSupprimer(arbreRN_t* t, noeud_t* v) {
     noeud_t* supprimer = v; // Le noeud à supprimer
     couleur_t CouleurOriginal = supprimer -> couleur; // La couleur d'origine du noeud à supprimer
     noeud_t* base;
+
+    if (v == t -> racine) {
+        if (v -> g == t -> nil && v -> d == t -> nil) {
+            t -> racine = t -> nil;
+        } 
+	else if (v -> g == t -> nil) {
+            t -> racine = v -> d;
+            t -> racine -> parent = t -> nil;
+        } 
+	else if (v -> d == t -> nil) {
+            t -> racine = v -> g;
+            t -> racine -> parent = t -> nil;
+        } 
+	else { 
+            supprimer = min(t, v -> d);
+            CouleurOriginal = supprimer -> couleur;
+            base = supprimer -> d;
+
+            if (supprimer != v -> d) {
+                echange(t, supprimer, supprimer -> d);
+                supprimer -> d = v -> d;
+                supprimer -> d -> parent = supprimer;
+            }
+            echange(t, v, supprimer);
+            supprimer -> g = v -> g;
+            supprimer -> g -> parent = supprimer;
+            supprimer -> couleur = v -> couleur;
+        }
+
+        free(v);
+        if (CouleurOriginal == noir) {
+            SupprimerReparer(t, t -> racine); 
+        }
+        return;
+    }
 
     if (v -> g == t -> nil) {
         // Remplacer v par son fils droit

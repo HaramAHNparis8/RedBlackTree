@@ -70,10 +70,7 @@ void TestLaFonction(){
 	noeud_t* noeud_a_supprimer = RechercherNoeud(arbre,40);
 	if (noeud_a_supprimer != arbre->nil) {
         	ArbreSupprimer(arbre, noeud_a_supprimer);
-	} 
-	else {
-		printf("Le noeud avec clé 15 n'existe pas.\n");
-    	}
+	}
 	printf("\n");
 	AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(arbre -> racine, arbre -> nil, 0);
 	
@@ -93,8 +90,8 @@ int main(void) {
     TestLaFonction();
     char choix = '\0';
     arbreRN_t* arbre = AllouerAbreRN();
-    //je vais creer le logique pour si l'utilisateur entre Y, on ajoute le noeud sinon le programme est fini. demain. je veux dormir un peu...
-/*    while(1){
+    //je vais creer la logique pour si l'utilisateur entre Y, on ajoute le noeud sinon le programme est fini. demain. je veux dormir un peu...
+    while(1){
 
 		if(choix == 'N'){
 
@@ -105,6 +102,6 @@ int main(void) {
 
 		}
 	}
-*/     
+     
     return 0;
 } 
