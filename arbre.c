@@ -420,7 +420,7 @@ noeud_t* RechercherNoeud(arbreRN_t* t,element_val val){
 }
 
 void SauvegarderVal(noeud_t* noeud, noeud_t* nil, element_val* tab, int indice,int taille ,element_val v) {
-    if (noeud == nil) {
+    if (indice < taille) {
         return;
     }
 
