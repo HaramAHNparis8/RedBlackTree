@@ -44,6 +44,7 @@ noeud_t* InsertionNoeudAbreRG(arbreRN_t* t, int val);
 void droit_rotation(arbreRN_t *t, noeud_t* enbas);
 void RNInsertReparer(arbreRN_t* t, noeud_t* noeud);
 void echange(arbreRN_t* t, noeud_t* a, noeud_t* b);
+arbreRN_t* ReparerArbreRN(int taille,element_val* tab);
 element_val* TableauPourRepare(int taille);
 noeud_t* RechercherNoeud(arbreRN_t* t,element_val val);
 void ReparerFrereRougeCase1(arbreRN_t* t, noeud_t* a, noeud_t* b);

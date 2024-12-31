@@ -8,23 +8,6 @@ element_val* TableauPourRepare(int taille) {
     return tab;
 }
 
-void SauvegarderVal(noeud_t* noeud, noeud_t* nil, element_val* tab, int indice, element_val v) {
-    if (noeud == nil) {
-        return;
-    }
-
-   
-    SauvegarderVal(noeud->g, nil, tab, indice, v);
-
-   
-    if (noeud -> cle != v) {
-        tab[indice] = noeud -> cle;
-        indice++;
-    }
-
-
-    SauvegarderVal(noeud -> d, nil, tab, indice, v);
-}
 
 noeud_t* AllouerMallocNoeud_t(){
 
@@ -305,6 +288,20 @@ noeud_t* min(arbreRN_t* t, noeud_t* min){
 }
 
 
+arbreRN_t* ReparerArbreRN(int taille,element_val* tab){
+
+	arbreRN_t* arbre = AllouerAbreRN();
+	int i;
+
+	for(i = 0; i < taille; ++i){
+		InitialisationArbreGN(arbre,tab[i]);
+
+	}
+	
+	return arbre;
+}
+
+
 void ReparerFrereRougeCase1(arbreRN_t* t, noeud_t* a, noeud_t* b) {
     if (b -> couleur == rouge) { 
         b -> couleur = noir; 
@@ -403,6 +400,25 @@ noeud_t* RechercherNoeud(arbreRN_t* t,element_val val){
 
 	return courant;
 }
+
+void SauvegarderVal(noeud_t* noeud, noeud_t* nil, element_val* tab, int* indice, element_val v) {
+    if (noeud == nil) {
+        return;
+    }
+
+   
+    SauvegarderVal(noeud->g, nil, tab, indice, v);
+
+   
+    if (noeud -> cle != v) {
+        tab[*indice] = noeud -> cle;
+        *(indice)++;
+    }
+
+
+    SauvegarderVal(noeud -> d, nil, tab, indice, v);
+}
+
 
 void ArbreSupprimer(arbreRN_t* t, noeud_t* v) {
     noeud_t* supprimer = v; // Le noeud à supprimer
