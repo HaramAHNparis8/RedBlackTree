@@ -57,4 +57,5 @@ void ReparerFrereRougeCase7(arbreRN_t* t, noeud_t* frere);
 void ReparerFrereRougeCase8(arbreRN_t* t, noeud_t* frere, noeud_t** v);
 void ArbreSupprimer(arbreRN_t* t, noeud_t* v);
 void SupprimerReparer(arbreRN_t *t, noeud_t * v);
+void SauvegarderVal(noeud_t* noeud, noeud_t* nil, element_val* tab, int indice,int taille ,element_val v);
 #endif

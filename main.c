@@ -54,6 +54,7 @@ void LeMessageRNArbreRes() {
 
 
 void TestLaFonction(){
+	int i, indice = 0, taille = 6;
 	//AfficherResultatNilEstBienAllouerOuPas();
 	//AfficherLeMessage(LeMessageInsertionFonction);
     	printf("\n");
@@ -89,8 +90,14 @@ void TestLaFonction(){
 	 //arbreRN_t* ArbreReparer = ReparerArbreRN(taille, tab);
 	//printf("\n les lst apres avoir reparer\n"); 
 	//AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(ArbreReparer -> racine, ArbreReparer -> nil, 0);
+	
+	element_val* tab = TableauPourRepare(taille);
+	SauvegarderVal(arbre->racine, arbre -> nil,tab, indice, taille,40);
+	for(i = 0; i < taille; ++i){
+		
+		printf("%d ", tab[i]);
 
-
+	}
 }
 
 int main(void) {

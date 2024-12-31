@@ -419,22 +419,22 @@ noeud_t* RechercherNoeud(arbreRN_t* t,element_val val){
 	return courant;
 }
 
-void SauvegarderVal(noeud_t* noeud, noeud_t* nil, element_val* tab, int* indice, element_val v) {
+void SauvegarderVal(noeud_t* noeud, noeud_t* nil, element_val* tab, int indice,int taille ,element_val v) {
     if (noeud == nil) {
         return;
     }
 
-   
-    SauvegarderVal(noeud->g, nil, tab, indice, v);
 
-   
-    if (noeud -> cle != v) {
-        tab[*indice] = noeud -> cle;
-        *(indice)++;
+    SauvegarderVal(noeud->g, nil, tab, indice, taille,v);
+
+
+    if (indice < taille && noeud -> cle != v) {
+        tab[indice] = noeud -> cle;
+        indice++;
     }
 
 
-    SauvegarderVal(noeud -> d, nil, tab, indice, v);
+    SauvegarderVal(noeud -> d, nil, tab, indice,taille,v);
 }
 
 
