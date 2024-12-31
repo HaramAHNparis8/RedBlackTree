@@ -106,7 +106,7 @@ void RechercheNoeudSentialRecusitif(arbreRN_t* t, noeud_t** actuelle, noeud_t** 
 
 
 void gauche_rotation(arbreRN_t *t, noeud_t* enbas){
-    // le noeud nommé enhaut va en haut, et noeud va en bas
+    // le noeud nomme enhaut va en haut, et noeud va en bas
     noeud_t* enhaut = enbas->d;
     enbas->d = enhaut->g;
 
@@ -294,7 +294,7 @@ arbreRN_t* ReparerArbreRN(int taille,element_val* tab){
 	int i;
 
 	for(i = 0; i < taille; ++i){
-		InitialisationArbreGN(arbre,tab[i]);
+		InsertionNoeudAbreRG(arbre,tab[i]);
 
 	}
 	

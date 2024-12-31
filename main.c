@@ -67,12 +67,12 @@ void TestLaFonction(){
 	AfficherLeMessage(LeMessageRNArbreRes);
 	printf("\n");	
 	AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(arbre -> racine, arbre -> nil, 0);
-	noeud_t* noeud_a_supprimer = RechercherNoeud(arbre,40);
-	if (noeud_a_supprimer != arbre->nil) {
-        	ArbreSupprimer(arbre, noeud_a_supprimer);
-	}
-	printf("\n");
-	AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(arbre -> racine, arbre -> nil, 0);
+	//noeud_t* noeud_a_supprimer = RechercherNoeud(arbre,40);
+	//if (noeud_a_supprimer != arbre->nil) {
+        //	ArbreSupprimer(arbre, noeud_a_supprimer);
+	//}
+	//printf("\n");
+	//AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(arbre -> racine, arbre -> nil, 0);
 	
 	//printf("\n");
 	//AfficherLeMessage(LeMessageRotationGauche);
@@ -84,6 +84,13 @@ void TestLaFonction(){
 	//droit_rotation(arbre, arbre -> racine);
 	//printf("\n rotation gauche\n");
 	//AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(arbre -> racine, arbre -> nil, 0);
+	 //element_val tab[] = {10, 20, 30, 50};
+	 //int taille = sizeof(tab) / sizeof(tab[0]);
+	 //arbreRN_t* ArbreReparer = ReparerArbreRN(taille, tab);
+	//printf("\n les lst apres avoir reparer\n"); 
+	//AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(ArbreReparer -> racine, ArbreReparer -> nil, 0);
+
+
 }
 
 int main(void) {
@@ -91,7 +98,8 @@ int main(void) {
     char choix = '\0';
     arbreRN_t* arbre = AllouerAbreRN();
     //je vais creer la logique pour si l'utilisateur entre Y, on ajoute le noeud sinon le programme est fini. demain. je veux dormir un peu...
-    while(1){
+    
+/*    while(1){
 
 		if(choix == 'N'){
 
@@ -102,6 +110,6 @@ int main(void) {
 
 		}
 	}
-     
+*/     
     return 0;
 } 
