@@ -311,6 +311,24 @@ void ReparerFrereRougeCase1(arbreRN_t* t, noeud_t* a, noeud_t* b) {
     }
 }
 
+void LibererNoeuds(noeud_t* noeud, noeud_t* nil) {
+    if (noeud == nil) {
+        return;
+    }
+
+    LibererNoeuds(noeud->g, nil);
+    LibererNoeuds(noeud->d, nil);
+    free(noeud);
+}
+
+void LibererArbre(arbreRN_t* arbre) {
+  
+    LibererNoeuds(arbre->racine, arbre->nil);
+    free(arbre->nil);
+    free(arbre);
+
+}
+
 void ReparerFrereRougeCase2ET3(arbreRN_t* t, noeud_t* frere, noeud_t** v) {
    
     if (frere -> g -> couleur == noir && frere -> d -> couleur == noir) {
