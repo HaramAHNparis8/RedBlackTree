@@ -288,13 +288,16 @@ noeud_t* min(arbreRN_t* t, noeud_t* min){
 }
 
 
-arbreRN_t* ReparerArbreRN(int taille,element_val* tab){
+arbreRN_t* ReparerArbreRN(noeud_t* noeud, noeud_t* nil, arbreRN_t* arbre, element_val v){
 
-	arbreRN_t* arbre = AllouerAbreRN();
-	int i;
 
-	for(i = 0; i < taille; ++i){
-		InsertionNoeudAbreRG(arbre,tab[i]);
+	while(noeud != nil){
+		if(noeud -> cle != v){
+	
+			continue;		
+	
+		}
+		InsertionNoeudAbreRG(arbre, noeud->cle);
 
 	}
 	
@@ -439,9 +442,10 @@ void SauvegarderVal(noeud_t* noeud, noeud_t* nil, element_val* tab, int indice,i
 
 
 void ArbreSupprimer(arbreRN_t* t, noeud_t* v) {
-    noeud_t* supprimer = v; // Le noeud à supprimer
-    couleur_t CouleurOriginal = supprimer -> couleur; // La couleur d'origine du noeud à supprimer
+    noeud_t* supprimer = v; // Le noeud a supprimer
+    couleur_t CouleurOriginal = supprimer -> couleur; // La couleur d'origine du noeud a supprimer
     noeud_t* base;
+    arbreRN_t* nouveauArbre = AllouerAbreRN();
 
     if (v == t -> racine) {
         if (v -> g == t -> nil && v -> d == t -> nil) {
@@ -473,7 +477,7 @@ void ArbreSupprimer(arbreRN_t* t, noeud_t* v) {
 
         free(v);
         if (CouleurOriginal == noir) {
-            SupprimerReparer(t, t -> racine); 
+             SupprimerReparer(t,v);
         }
         return;
     }
@@ -518,5 +522,6 @@ void ArbreSupprimer(arbreRN_t* t, noeud_t* v) {
         SupprimerReparer(t, base);
     }
 }
+
 
 

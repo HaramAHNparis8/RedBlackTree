@@ -7,4 +7,7 @@ typedef struct arbreRN arbreRN_t;
 void AfficherResultatNilEstBienAllouerOuPas();
 void TestLaFonction();
 void AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(noeud_t* noeud,arbreRN_t* nil, int niveau);
+void LeMessageDesole();
+void LeMessageDesoleDeux();
+void LeMessageContent();
 #endif

@@ -37,17 +37,13 @@ void afficherMessageEntrezLeval() {
 
 int entrelavaleur() {
     
-    element_int n;
-    AfficherLeMessage(afficherMessageEntrezLeval);   
+    element_int n; 
     printf("\n-> ");
-    fflush(stdout);
     scanf("%d", &n);
   
     return n;
 }
-void EstimationGeneral(){
 
-}
 int EstRouge(couleur_t* couleur){
 
 	return (*couleur == rouge) ? 1 : 0;
