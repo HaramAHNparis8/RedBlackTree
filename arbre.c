@@ -445,7 +445,7 @@ void ArbreSupprimer(arbreRN_t* t, noeud_t* v) {
     noeud_t* supprimer = v; // Le noeud a supprimer
     couleur_t CouleurOriginal = supprimer -> couleur; // La couleur d'origine du noeud a supprimer
     noeud_t* base;
-    arbreRN_t* nouveauArbre = AllouerAbreRN();
+   
 
     if (v == t -> racine) {
         if (v -> g == t -> nil && v -> d == t -> nil) {

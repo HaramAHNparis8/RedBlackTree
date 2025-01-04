@@ -15,7 +15,7 @@ void AfficherResultatNilEstBienAllouerOuPas(){
 void AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(noeud_t* noeud, arbreRN_t* nil, int niveau){
 
 	int i;
-	if(noeud == nil){
+	if((arbreRN_t *)noeud == nil){
 		
 		return;
 	}
@@ -145,7 +145,7 @@ int main(void) {
 		else if(choix == 'Y'){
 			n = entrelavaleur();
 			InsertionNoeudAbreRG(arbre, n);
-			AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(arbre -> racine, arbre -> nil, 0);
+			AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(arbre -> racine,(arbreRN_t*)arbre -> nil, 0);
 			printf("\n");
 			n = 0;
 			AfficherLeMessage(LeMessageInsertionFonction);
@@ -154,6 +154,7 @@ int main(void) {
 				
 			
 		}
+		
 		else if(choix == 'D'){
 			n = entrelavaleur();
 			noeud_t* noeud_a_supprimer = RechercherNoeud(arbre,n);
@@ -166,19 +167,23 @@ int main(void) {
 					AfficherLeMessage(LeMessageDesoleDeux);
 					printf("\n");					
 			}
-			
+				
 			else{
 				ArbreSupprimer(arbre, noeud_a_supprimer);
-				AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(arbre -> racine, arbre -> nil, 0);
+				AfficherAbrePourTesterLaFonctionAllouerEstBienOupas(arbre -> racine,(arbreRN_t*)arbre -> nil, 0);
 				printf("\n");
 				AfficherLeMessage(LeMessageContent);
 				printf("\n");
 			}
-			n = 0;
-
-
-		}
 		
+                        
+			n = 0;
+		}
+		else if(choix == 'P'){
+
+                                AfficherLeMessageOeuf();
+
+                        }
 		
 	}
 
